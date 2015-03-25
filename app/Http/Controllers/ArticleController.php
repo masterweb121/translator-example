@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Article;
-use App\Locale;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller {
 
@@ -44,10 +44,10 @@ class ArticleController extends Controller {
 	public function store()
 	{
 		// Set the locale you want to store.
-		App::setLocale('sv');
+		App::setLocale('en');
 
 		// Create a new article.
-		Article::create($input);
+		Article::create(Input::all());
 
 		return redirect('articles');
 	}
@@ -66,10 +66,9 @@ class ArticleController extends Controller {
 		$article = Article::findOrFail($id);
 
 		// Update the article.
-		$article->update($input);
+		$article->update(Input::all());
 
-		// Redirect back to articles page.
-		return redirect('articles');
+		return $article;
 	}
 
 	/**

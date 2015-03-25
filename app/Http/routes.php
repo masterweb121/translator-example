@@ -16,8 +16,8 @@ Route::get('home', 'HomeController@index');
 
 Route::get('articles', 'ArticleController@index');
 Route::get('articles/{id}', 'ArticleController@show');
+Route::put('articles/{id}', 'ArticleController@update');
 Route::post('articles', 'ArticleController@store');
-
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
